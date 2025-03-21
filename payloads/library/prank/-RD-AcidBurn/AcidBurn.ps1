@@ -80,7 +80,7 @@ function Get-RAM {
     $OS = (Get-WmiObject Win32_OperatingSystem).Name;$OSpos = $OS.IndexOf("|");$OS = $OS.Substring(0, $OSpos)
 
     $RAM=Get-WmiObject Win32_PhysicalMemory | Measure-Object -Property capacity -Sum | % { "{0:N1}" -f ($_.sum / 1GB)}
-    $RAMpos = $RAM.IndexOf('.')
+    $RAMpos = $RAM.IndexOf(',')
     $RAM = [int]$RAM.Substring(0,$RAMpos).Trim()
 
 # ENTER YOUR CUSTOM RESPONSES HERE
